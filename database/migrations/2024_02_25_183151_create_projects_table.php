@@ -13,6 +13,16 @@ return new class extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->date('start_date')->default(now());
+            $table->date('estimated_end_date');
+            $table->enum('priority', ['Low', 'Medium', 'High', 'Urgent']);
+            $table->enum('status', ['Not Started', 'In Progress', 'Completed']);
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('team_id')->constrained();
+            $table->unsignedBigInteger('project_leader_id');
+            $table->foreign('project_leader_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

@@ -58,4 +58,29 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    public function phases()
+    {
+        return $this->hasMany(Phase::class);
+    }
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
+
+    public function isProjectLeader(Project $project)
+    {
+        return $this->id === $project->project_leader_id;
+    }
+
+    public function isAssignedToTask(Task $task)
+    {
+        return $this->id === $task->user_assigned_id;
+    }
 }

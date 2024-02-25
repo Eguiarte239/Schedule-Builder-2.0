@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('description');
+            $table->date('start_date')->default(now());
+            $table->date('estimated_end_date');
+            $table->enum('priority', ['Low', 'Medium', 'High', 'Urgent']);
+            $table->enum('status', ['Not Started', 'In Progress', 'Completed']);
+            $table->boolean('is_completed')->default(false);
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('phase_id')->constrained();
+            $table->unsignedBigInteger('user_assigned_id');
+            $table->foreign('user_assigned_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
