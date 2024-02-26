@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->date('start_date')->default(now());
             $table->date('estimated_end_date');
-            $table->enum('priority', ['Low', 'Medium', 'High', 'Urgent']);
-            $table->enum('status', ['Not Started', 'In Progress', 'Completed']);
+            $table->int('priority')->default(0);
+            $table->int('status')->default(0);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('team_id')->constrained();
             $table->unsignedBigInteger('project_leader_id');
