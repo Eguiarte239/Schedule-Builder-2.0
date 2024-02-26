@@ -15,6 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- Styles -->
+        <script src="https://unpkg.com/flowbite@1.5.1/dist/datepicker.js"></script>
         @livewireStyles
     </head>
     <body class="font-sans antialiased">

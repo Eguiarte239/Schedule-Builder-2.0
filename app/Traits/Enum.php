@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait EnumTrait
+trait Enum
 {
     /**
      * Obtiene el valor de acuerdo del nombre del caso dado.
