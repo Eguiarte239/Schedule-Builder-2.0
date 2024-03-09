@@ -14,7 +14,7 @@ class CreateEditModal extends Component
     use GetModels;
 
     public bool $showModal = false;
-    public ?string $model = null;
+    public mixed $model;
     public ?string $action = null;
     public ?string $title = null;
     public ?string $description = null;
@@ -41,9 +41,9 @@ class CreateEditModal extends Component
     }
 
     public function save(){
+        $modelClass = $this->getModelClass($this->model);
         $this->validate();
-        $model = $this->getModelClass($this->model);
-        $model::create([
+        $modelClass::create([
             'title' => $this->title,
             'description' => $this->description,
             'start_date' => $this->startDate,
@@ -54,5 +54,6 @@ class CreateEditModal extends Component
             'team_id' => auth()->user()->current_team_id,
             'project_leader_id' => auth()->id(),
         ]);
+        $this->reset(['showModal', 'title', 'description', 'startDate', 'estimatedEndDate', 'priority', 'status']);
     }
 }

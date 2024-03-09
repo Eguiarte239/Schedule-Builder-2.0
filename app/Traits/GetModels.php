@@ -8,6 +8,9 @@ trait GetModels
     {
         $model = ucfirst($model);
         $modelClass = "App\\Models\\{$model}";
+        if (!class_exists($modelClass)) {
+            throw new \Exception("$modelClass is not a valid class name");
+        }
         return app($modelClass);
     }
 }

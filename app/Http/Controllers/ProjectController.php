@@ -12,7 +12,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('projects.index');
+        $modelName = 'project';
+        return view('projects.index', compact('modelName'));
     }
 
     /**
