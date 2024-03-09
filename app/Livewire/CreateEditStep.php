@@ -14,6 +14,7 @@ class CreateEditStep extends Component
     use GetModels;
 
     public bool $showModal = false;
+    public ?string $model = null;
     public ?string $action = null;
     public ?string $title = null;
     public ?string $description = null;
