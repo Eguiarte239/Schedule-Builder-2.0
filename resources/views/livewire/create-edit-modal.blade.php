@@ -81,7 +81,7 @@
                             <label for="priority"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona una
                                 prioridad</label>
-                            <select id="priority"
+                            <select id="priority" wire:model.defer="priority"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 @foreach (App\Traits\Priority::getCases() as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
@@ -93,12 +93,13 @@
                             <label for="status"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona un
                                 estatus</label>
-                            <select id="status"
+                            <select id="status" wire:model.defer="status"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 @foreach (App\Traits\Status::getCases() as $value => $label)
                                     <option value="{{ $value }}">{{ $label }}</option>
                                 @endforeach
                             </select>
+                            <x-input-error for="status" />
                         </div>
                     </div>
                 </form>

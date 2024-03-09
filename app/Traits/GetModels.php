@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-trait Models
+trait GetModels
 {
     public function getModelClass($model)
     {

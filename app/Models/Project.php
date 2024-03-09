@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,6 +24,29 @@ class Project extends Model
         'team_id',
         'project_leader_id'
     ];
+
+    protected $casts = [
+        'start_date' => 'date',
+        'estimated_end_date' => 'date',
+    ];
+
+    public function getStartDateAttribute($value)
+    {
+        if ($value) {
+            return Carbon::parse($value)->format('Y-m-d');
+        }
+    
+        return null;
+    }
+
+    public function getEstimatedEndDateAttribute($value)
+    {
+        if ($value) {
+            return Carbon::parse($value)->format('Y-m-d');
+        }
+    
+        return null;
+    }
 
     public function user()
     {

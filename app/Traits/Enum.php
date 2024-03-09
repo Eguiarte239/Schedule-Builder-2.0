@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use ReflectionClass;
+
 trait Enum
 {
     /**
@@ -37,17 +39,21 @@ trait Enum
     }
 
     /**
-     * Obtiene los valores de acuerdo a los nombres de los casdos dados
+     * Obtiene los valores de acuerdo a los nombres de los casos dados
      *
      * @param array $names
      * @return array
      */
-    public static function getValues(array $names): ?array
+    public static function getValues(): array
     {
+        $reflection = new ReflectionClass(static::class);
+        $constants = $reflection->getConstants();
+
         $values = [];
-        foreach ($names as $name) {
-            $values[] = self::getValue($name);
+        foreach ($constants as $name => $value) {
+            $values[] = $value;
         }
+
         return $values;
     }
 
