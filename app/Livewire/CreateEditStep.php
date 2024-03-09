@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Date;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 
-class CreateEditModal extends Component
+class CreateEditStep extends Component
 {
     use GetModels;
 
     public bool $showModal = false;
     public ?string $action = null;
-    public ?string $model = null;
     public ?string $title = null;
     public ?string $description = null;
     public ?string $startDate = null;
@@ -38,21 +37,5 @@ class CreateEditModal extends Component
             'priority' => 'required|valid_priority',
             'status' => 'required|valid_status',
         ];
-    }
-
-    public function save(){
-        $this->validate();
-        $model = $this->getModelClass($this->model);
-        $model::create([
-            'title' => $this->title,
-            'description' => $this->description,
-            'start_date' => $this->startDate,
-            'estimated_end_date' => $this->estimatedEndDate,
-            'priority' => $this->priority->value,
-            'status' => $this->status->value,
-            'user_id' => auth()->id(),
-            'team_id' => auth()->user()->current_team_id,
-            'project_leader_id' => auth()->id(),
-        ]);
     }
 }

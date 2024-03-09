@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Livewire\TaskStep;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -48,5 +49,12 @@ class Task extends Model
         $this->status = 'Completed';
         $this->is_completed = true;
         $this->save();
+    }
+
+    public function steps()
+    {
+        return [
+            TaskStep::class,
+        ];
     }
 }
