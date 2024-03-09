@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Livewire\PhaseStep;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -50,12 +49,5 @@ class Phase extends Model
         $this->status = 'Completed';
         $this->is_completed = true;
         $this->save();
-    }
-
-    public function steps()
-    {
-        return [
-            PhaseStep::class,
-        ];
     }
 }

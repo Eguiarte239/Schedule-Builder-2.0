@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Livewire\ProjectStep;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -72,12 +71,5 @@ class Project extends Model
     public function tasks()
     {
         return $this->hasManyThrough(Task::class, Phase::class);
-    }
-
-    public function steps()
-    {
-        return [
-            ProjectStep::class,
-        ];
     }
 }
