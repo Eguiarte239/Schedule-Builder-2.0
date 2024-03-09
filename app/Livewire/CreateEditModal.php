@@ -16,7 +16,6 @@ class CreateEditModal extends Component
     public bool $showModal = false;
     public ?string $model = null;
     public ?string $action = null;
-    public ?string $model = null;
     public ?string $title = null;
     public ?string $description = null;
     public ?string $startDate = null;
