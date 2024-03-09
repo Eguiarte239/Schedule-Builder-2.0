@@ -1,4 +1,4 @@
-<?php
+eger<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,8 +17,8 @@ return new class extends Migration
             $table->text('description');
             $table->date('start_date')->default(now());
             $table->date('estimated_end_date');
-            $table->int('priority')->default(0);
-            $table->int('status')->default(0);
+            $table->integer('priority')->default(0);
+            $table->integer('status')->default(0);
             $table->boolean('is_completed')->default(false);
             $table->foreignId('user_id')->constrained();
             $table->foreignId('project_id')->constrained();
